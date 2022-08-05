@@ -10,7 +10,7 @@ type TTicketsList = {
 };
 export const TicketsList = ({ tickets }: TTicketsList) => {
   return (
-    <Box sx={{ bgcolor: "pink" }}>
+    <Box>
       <List disablePadding={true}>
         {tickets.map((ticket, index) => (
           <ListItem
