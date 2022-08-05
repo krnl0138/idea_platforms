@@ -8,7 +8,13 @@ export const Logo = () => {
   console.log(PROJECT_LOGO);
   return (
     <Box sx={{ textAlign: "center", marginTop: "3rem" }}>
-      <Image src="/plane_icon.svg" alt="Project logo" height="50" width="50" />
+      <Image
+        src={PROJECT_LOGO}
+        alt="Project logo"
+        height="50"
+        width="50"
+        layout="fixed"
+      />
     </Box>
   );
 };
