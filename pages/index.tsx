@@ -25,7 +25,6 @@ const AppWrapper = () => {
   const [currency, setCurrency] = useState<TCurrencies>("rub");
   const [transfer, setTransfer] = useState<number[]>([-1]);
   const data = { currency, transfer };
-  console.log(transfer);
 
   const handleCurrency = (currency: TCurrencies) => setCurrency(currency);
 

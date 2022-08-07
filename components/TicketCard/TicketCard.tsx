@@ -13,12 +13,11 @@ import { TicketCardTransfer } from "./TicketCardTransfer";
 
 // eslint-disable-next-line react/display-name
 export const TicketCard = React.memo(() => {
-  // console.log("Ticket Card was rendered!");
   const styleMainTicketContainer = {
     width: "100%",
     display: "grid",
     gridTemplateColumns: "35% 1fr",
-    gridTemplateRows: '165px',
+    gridTemplateRows: "165px",
     borderRadius: styleGlobalBorderRadius,
     boxShadow: styleGlobalBoxShadow,
     bgcolor: styleGlobalBackgroundColor,
