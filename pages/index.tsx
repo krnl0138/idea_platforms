@@ -1,3 +1,4 @@
+import { styled } from "@mui/system";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import React, { useState } from "react";
@@ -8,15 +9,50 @@ import { TicketsList } from "../components/TicketsList";
 import { Layout } from "../components/utils/Layout";
 import TICKETS from "../utils/tickets.json";
 import { TCurrencies } from "../utils/types";
+import { red } from "@mui/material/colors";
 
-const styleMainContainer = {
-  display: "grid",
-  gridTemplateColumns: "28% 1fr",
-  gap: "1.2rem",
-  marginTop: "2rem",
-  padding: 0,
-  "@media": { padding: 0 },
-};
+// const styleMainContainer = {
+//   "@supports (display: gridx)": {
+//     display: "grid",
+//     gridTemplateColumns: "28% 1fr",
+//     gap: "1.2rem",
+//     bgcolor: "red",
+//   },
+
+//   "@supports not (display: grid)": {
+//     bgcolor: "yellow",
+//     display: "flex",
+//     marginTop: "5rem",
+//   },
+//   marginTop: "2rem",
+//   padding: 0,
+//   "@media": { padding: 0 },
+// };
+
+const MyMainContainer = styled("div")`
+  @supports (display: grid) {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 28% 1fr;
+    /* -ms-grid-template-columns: 28% 1fr; */
+    gap: 1.2rem;
+    /* -ms-gap: 1.2rem; */
+    background-color: red;
+  }
+  @supports not (display: grid) {
+    background-color: yellow;
+    display: flex;
+    margin-top: 5rem;
+  }
+  margin-top: 2rem;
+  padding: 0;
+  @media (all) {
+    padding: 0;
+  }
+  :ie11 {
+    background-color: navy;
+  }
+`;
 
 /**
  * Provide `AppWrapper` to colocate the state and avoid unnecessary re-renders
@@ -51,7 +87,7 @@ const AppWrapper = () => {
   };
 
   return (
-    <Container sx={styleMainContainer}>
+    <MyMainContainer>
       <Box>
         <TicketsForm>
           <TicketsFormCurrency
@@ -62,7 +98,7 @@ const AppWrapper = () => {
         </TicketsForm>
       </Box>
       <TicketsList data={data} tickets={TICKETS.tickets} />
-    </Container>
+    </MyMainContainer>
   );
 };
 
