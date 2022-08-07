@@ -1,1 +1,1 @@
-To build clone the repo and use `npm run dev` or `npm run build`.
+To build clone the repo and use `npm run build` following `npm run start`.
