@@ -1,4 +1,5 @@
 import moment from "moment";
+import "moment/locale/ru";
 
 export const formatWordEnding = (n: number) => {
   if (n === 1) return `${n} пересадка`;
@@ -13,7 +14,7 @@ export const makeNaturalDate = (date: string) => {
       "фев",
       "мар",
       "апр",
-      "май",
+      "мая",
       "июн",
       "июл",
       "авг",
@@ -24,6 +25,5 @@ export const makeNaturalDate = (date: string) => {
     ],
     weekdaysMin: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
   });
-  return moment(date).format("D MMM YYYY, dd");
-  // return moment.monthsShort();
+  return moment(date, "DD.MM.YY").format("D MMM YYYY, dd");
 };

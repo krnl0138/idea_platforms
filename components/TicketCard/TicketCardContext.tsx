@@ -1,5 +1,14 @@
-import { createContext } from "react";
-import { INITIAL_STATE_TICKET } from "../../utils/constants";
+import { createContext, useContext } from "react";
+import { TTicket } from "../../utils/types";
 
-const initial = { ...INITIAL_STATE_TICKET, index: -Infinity };
-export const TicketCardContext = createContext(initial);
+export const TicketCardContext = createContext<
+  (TTicket & { currency: string }) | undefined
+>(undefined);
+
+export const useTicketCard = () => {
+  const context = useContext(TicketCardContext);
+  if (context === undefined) {
+    throw new Error("useTicketCard must be used within a CountProvider");
+  }
+  return context;
+};

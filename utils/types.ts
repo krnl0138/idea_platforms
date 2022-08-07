@@ -11,3 +11,5 @@ export type TTicket = {
   stops: number;
   price: number;
 };
+
+export type TCurrencies = "rub" | "eur" | "usd";

@@ -1,21 +1,25 @@
 import Box from "@mui/material/Box";
 import React from "react";
-import { TicketCardTimeContainer } from "./TicketCardTimeContainer";
+import { TicketCardFlightInfo } from "./TicketCardFlightInfo";
 import { TicketCardTransfer } from "./TicketCardTransfer";
 
-export const TicketCardRightSide = () => {
-  const styleRightSection = {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "1rem",
-    borderRight: "1px solid rgba(0,0,0,0.05)",
-    color: "black",
-  };
+const styleRightSection = {
+  display: "flex",
+  position: 'relative',
+  justifyContent: "space-between",
+  padding: "1.5rem",
+  borderRight: "1px solid rgba(0,0,0,0.05)",
+  color: "black",
+};
+
+export const TicketCardRightSide = React.memo(() => {
   return (
     <Box sx={styleRightSection}>
-      <TicketCardTimeContainer />
-      <TicketCardTimeContainer isDestination={true} />
+      <TicketCardFlightInfo />
+      <TicketCardFlightInfo isDestination={true} />
       <TicketCardTransfer />
     </Box>
   );
-};
+});
+
+TicketCardRightSide.displayName = "TicketCardRightSide";

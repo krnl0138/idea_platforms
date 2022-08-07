@@ -1,47 +1,54 @@
 import { Box, Typography } from "@mui/material";
-import React, { useContext } from "react";
-import { styleGlobalTextColorSecondary } from "../../styles/variables";
+import {
+  styleGlobalGray,
+  styleGlobalTextColorSecondary,
+} from "../../styles/variables";
 import { formatWordEnding } from "../../utils/functions";
-import { TicketCardContext } from "./TicketCardContext";
+import { useTicketCard } from "./TicketCardContext";
+
+const styleMain = {
+  position: "absolute",
+  top: "19%",
+  right: "41%",
+  color: styleGlobalTextColorSecondary,
+  textAlign: "center",
+  textTransform: "uppercase",
+  "::before": {
+    content: "''",
+    position: "absolute",
+    left: "1.7rem",
+    bottom: "-5px",
+    transform: "translateX(-50%)",
+    width: "6.5rem",
+    borderBottom: `1px solid ${styleGlobalGray}`,
+  },
+  "::after": {
+    content: "''",
+    position: "absolute",
+    bottom: "-.6rem",
+    right: "-1.5rem",
+    transform: "rotate(45deg)",
+    width: "10px",
+    height: "10px",
+    backgroundImage: `url(/plane-icon.svg)`,
+    backgroundSize: "10px 10px",
+    backgroundRepeat: "no-repeat",
+    filter: "opacity(0.15)",
+  },
+};
+
+const styleTransferText = {
+  fontWeight: 700,
+  fontSize: "0.65rem",
+  lineHeight: "1.6",
+  letterSpacing: "-0.07em",
+};
 
 export const TicketCardTransfer = () => {
-  const styleMain = {
-    position: "absolute",
-    top: "15%",
-    right: "24%",
-    color: styleGlobalTextColorSecondary,
-    textAlign: "center",
-    padding: "0 1rem .2rem .8rem",
-    borderBottom: `1px solid ${styleGlobalTextColorSecondary}`,
-    textTransform: "uppercase",
-    "::before": {
-      content: "''",
-      position: "absolute",
-      bottom: "-5px",
-      right: "-11px",
-      transform: "rotate(45deg)",
-      width: "10px",
-      height: "10px",
-      backgroundImage: `url(/plane-icon.svg)`,
-      backgroundSize: "10px 10px",
-      backgroundRepeat: "no-repeat",
-      filter: "opacity(0.2)",
-    },
-  };
-
-  const { index } = useContext(TicketCardContext);
+  const { stops } = useTicketCard();
   return (
-    <Box sx={styleMain}>
-      <Typography
-        sx={{
-          fontWeight: 700,
-          fontSize: "0.6rem",
-          lineHeight: "1.8",
-          letterSpacing: "-0.07em",
-        }}
-      >
-        {formatWordEnding(index)}
-      </Typography>
+    <Box id="test" component="div" sx={styleMain}>
+      <Typography sx={styleTransferText}>{formatWordEnding(stops)}</Typography>
     </Box>
   );
 };
