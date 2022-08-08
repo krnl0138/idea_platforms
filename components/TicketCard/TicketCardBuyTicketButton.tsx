@@ -68,7 +68,11 @@ export const BuyTicketButton = () => {
     <Button
       sx={
         IE
-          ? { ...styleButton, backgroundColor: styleGlobalOrangeIE11 }
+          ? {
+              ...styleButton,
+              backgroundColor: styleGlobalOrangeIE11,
+              ":hover": { backgroundColor: styleGlobalOrangeIE11 },
+            }
           : styleButton
       }
     >

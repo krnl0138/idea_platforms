@@ -60,6 +60,7 @@ const styleMainIE11 = {
     backgroundImage: `url(/plane-icon.svg)`,
     backgroundSize: "10px 10px",
     backgroundRepeat: "no-repeat",
+    opacity: 0.3,
   },
 };
 
