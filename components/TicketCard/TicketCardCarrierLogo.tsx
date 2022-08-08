@@ -6,12 +6,12 @@ import { useTicketCard } from "./TicketCardContext";
 export const CarrierLogo = React.memo(() => {
   const { carrier } = useTicketCard();
   return (
-    <Box component="div" sx={{ margin: "1.5rem 1rem 1rem" }}>
+    <Box component="div" sx={{ margin: "1.5rem 1.5rem 1rem" }}>
       <img
         src={`../../${carrier}.png`}
         alt={`${carrier} logo`}
         height="40"
-        width="140"
+        width="120"
       />
     </Box>
   );

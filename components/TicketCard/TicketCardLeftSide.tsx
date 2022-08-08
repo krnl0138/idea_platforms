@@ -5,7 +5,7 @@ import { CarrierLogo } from "./TicketCardCarrierLogo";
 
 const styleLeftSection = {
   display: "flex",
-  width: "35%",
+  width: "40%",
   flexDirection: "column",
   justifyContent: "center",
   padding: "0 1.3rem 1.5rem",
