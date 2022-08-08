@@ -36,10 +36,10 @@ export const TicketsList = React.memo(({ data, tickets }: TTicketsList) => {
   }, [tickets, transfer]);
 
   return tickets.length > 0 ? (
-    <Box>
+    <Box sx={{ width: "100%" }}>
       <List disablePadding={true}>
         {filtered.length > 0 &&
-          filtered.map((ticket) => (
+          filtered.map((ticket, i) => (
             <ListItem key={uuidv4()} disableGutters={true} sx={styleListItem}>
               <TicketCardContext.Provider value={{ ...ticket, currency }}>
                 <TicketCard />

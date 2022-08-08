@@ -45,7 +45,7 @@ const FlightInfoDate = ({ date }: { date: string }) => {
     color: styleGlobalTextColorSecondary,
     fontWeight: 400,
     fontSize: "0.8rem",
-    lineHeight: 1.2,
+    lineHeight: 1.3,
     letterSpacing: "-0.03em",
   };
   return (
@@ -79,7 +79,11 @@ export const TicketCardFlightInfo = ({
     <Box
       sx={
         isDestination
-          ? { ...styleMainContainer, alignItems: "flex-end" }
+          ? {
+              ...styleMainContainer,
+              alignItems: "flex-end",
+              marginLeft: "auto",
+            }
           : styleMainContainer
       }
     >

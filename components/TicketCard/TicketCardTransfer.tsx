@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import {
   styleGlobalGray,
   styleGlobalTextColorSecondary,
@@ -16,10 +17,10 @@ const styleMain = {
   "::before": {
     content: "''",
     position: "absolute",
-    left: "1.7rem",
+    left: "1.8rem",
     bottom: "-5px",
     transform: "translateX(-50%)",
-    width: "6.5rem",
+    width: "6.4rem",
     borderBottom: `1px solid ${styleGlobalGray}`,
   },
   "::after": {
@@ -37,6 +38,31 @@ const styleMain = {
   },
 };
 
+const styleMainIE11 = {
+  ...styleMain,
+  "::before": {
+    content: "''",
+    position: "absolute",
+    left: "1.7rem",
+    bottom: "-5px",
+    transform: "translateX(-50%)",
+    width: "6rem",
+    borderBottom: `1px solid rgba(0,0,0,0.3)`,
+  },
+  "::after": {
+    content: "''",
+    position: "absolute",
+    bottom: "-.6rem",
+    right: "-1.3rem",
+    transform: "rotate(45deg)",
+    width: "10px",
+    height: "10px",
+    backgroundImage: `url(/plane-icon.svg)`,
+    backgroundSize: "10px 10px",
+    backgroundRepeat: "no-repeat",
+  },
+};
+
 const styleTransferText = {
   fontWeight: 700,
   fontSize: "0.65rem",
@@ -46,8 +72,14 @@ const styleTransferText = {
 
 export const TicketCardTransfer = () => {
   const { stops } = useTicketCard();
+  const [IE, setIE] = useState(false);
+  useEffect(() => {
+    if (!window["msCrypto"]) return;
+    setIE(true);
+  }, []);
+
   return (
-    <Box id="test" component="div" sx={styleMain}>
+    <Box id="test" component="div" sx={IE ? styleMainIE11 : styleMain}>
       <Typography sx={styleTransferText}>{formatWordEnding(stops)}</Typography>
     </Box>
   );

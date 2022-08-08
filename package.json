@@ -2,7 +2,19 @@
   "name": "ideaplatform_tickets",
   "version": "0.1.0",
   "private": true,
-  "browserslist": [],
+  "browserslist": {
+    "production": [
+      ">0.3%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,13 +22,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.18.10",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@formatjs/intl-getcanonicallocales": "^2.0.2",
+    "@formatjs/intl-locale": "^3.0.3",
+    "@formatjs/intl-numberformat": "^8.0.4",
+    "@formatjs/intl-pluralrules": "^5.0.3",
     "@mui/material": "^5.9.3",
     "moment": "^2.29.4",
     "next": "12.2.4",
     "next-images": "^1.8.4",
-    "postcss-ie11": "^0.0.1",
+    "next-optimized-images": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.54.3",
@@ -27,6 +44,7 @@
   "devDependencies": {
     "@types/node": "^18.6.4",
     "@types/react": "^18.0.15",
+    "babel-plugin-import-glob": "^2.0.0",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.4",
     "typescript": "^4.7.4"

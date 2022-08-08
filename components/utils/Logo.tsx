@@ -30,20 +30,14 @@ export const Logo = () => {
           },
         }}
       >
-        <img
-          src={require("../../public/project_logo.svg")}
-          alt="project logo"
-          height={50}
-          width={50}
-        />
-
-        {/* <Image
+        <Image
+          // src={`/${PROJECT_LOGO}`}
           src={PROJECT_LOGO}
           alt="Project logo"
           height="50"
           width="50"
           layout="fixed"
-        /> */}
+        />
       </Box>
     </Box>
   );

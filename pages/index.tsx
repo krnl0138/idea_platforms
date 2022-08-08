@@ -1,7 +1,6 @@
-import { styled } from "@mui/system";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import React, { useState } from "react";
+import { styled } from "@mui/system";
+import { useState } from "react";
 import { TicketsForm } from "../components/TicketsForm/TicketsForm";
 import { TicketsFormCurrency } from "../components/TicketsForm/TicketsFormCurrency";
 import { TicketsFormTransfer } from "../components/TicketsForm/TicketsFormTransfer";
@@ -9,48 +8,13 @@ import { TicketsList } from "../components/TicketsList";
 import { Layout } from "../components/utils/Layout";
 import TICKETS from "../utils/tickets.json";
 import { TCurrencies } from "../utils/types";
-import { red } from "@mui/material/colors";
-
-// const styleMainContainer = {
-//   "@supports (display: gridx)": {
-//     display: "grid",
-//     gridTemplateColumns: "28% 1fr",
-//     gap: "1.2rem",
-//     bgcolor: "red",
-//   },
-
-//   "@supports not (display: grid)": {
-//     bgcolor: "yellow",
-//     display: "flex",
-//     marginTop: "5rem",
-//   },
-//   marginTop: "2rem",
-//   padding: 0,
-//   "@media": { padding: 0 },
-// };
 
 const MyMainContainer = styled("div")`
-  @supports (display: grid) {
-    /* display: flex; */
-    display: grid;
-    grid-template-columns: 28% 1fr;
-    /* -ms-grid-template-columns: 28% 1fr; */
-    gap: 1.2rem;
-    /* -ms-gap: 1.2rem; */
-    background-color: red;
-  }
-  @supports not (display: grid) {
-    background-color: yellow;
-    display: flex;
-    margin-top: 5rem;
-  }
+  display: flex;
   margin-top: 2rem;
   padding: 0;
   @media (all) {
     padding: 0;
-  }
-  :ie11 {
-    background-color: navy;
   }
 `;
 
@@ -65,8 +29,9 @@ const AppWrapper = () => {
   const handleCurrency = (currency: TCurrencies) => setCurrency(currency);
 
   const handleTransfer = (option: number, only?: boolean) => {
-    if (!transfer)
+    if (!transfer) {
       throw new Error("Transfer state was not found. Something is wrong");
+    }
     if (only) {
       setTransfer([option]);
       return;
@@ -87,7 +52,7 @@ const AppWrapper = () => {
   };
 
   return (
-    <MyMainContainer>
+    <MyMainContainer sx={{ width: "835px" }}>
       <Box>
         <TicketsForm>
           <TicketsFormCurrency

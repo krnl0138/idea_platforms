@@ -1,8 +1,21 @@
-const withImages = require("next-images");
+// const withImages = require("next-images");
+const withOptimizedImages = require("next-optimized-images");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // fileExtensions: ["svg", "webp", "jpg", "jpeg", "png", "gif"],
-  // disableStaticImages: true,
+  webpack: (config, options) => {
+    // Since MUI doesn't support IE11, use legacy
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@mui/base": "@mui/base/legacy",
+      "@mui/lab": "@mui/lab/legacy",
+      "@mui/material": "@mui/material/legacy",
+      "@mui/styled-engine": "@mui/styled-engine/legacy",
+      "@mui/system": "@mui/system/legacy",
+      "@mui/utils": "@mui/utils/legacy",
+    };
+    return config;
+  },
   images: {
     disableStaticImages: true,
   },
@@ -10,4 +23,7 @@ const nextConfig = {
   swcMinify: true,
 };
 
-module.exports = withImages(nextConfig);
+module.exports = withOptimizedImages({
+  handleImages: ["jpeg", "png", "svg"],
+  ...nextConfig,
+});

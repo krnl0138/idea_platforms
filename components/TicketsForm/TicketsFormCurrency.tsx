@@ -1,9 +1,12 @@
 import { Box, Button, ButtonGroup, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   styleGlobalBluePrimary,
+  styleGlobalBluePrimaryIE11,
   styleGlobalBlueSecondary,
+  styleGlobalBlueSecondaryIE11,
   styleGlobalBlueTertiary,
+  styleGlobalBlueTertiaryIE11,
   styleGlobalBorderRadius,
   styleGlobalGray,
   styleGlobalWhite,
@@ -49,9 +52,33 @@ type TTicketsFormCurrency = {
 // eslint-disable-next-line react/display-name
 export const TicketsFormCurrency = React.memo(
   ({ currency, handleCurrency }: TTicketsFormCurrency) => {
+    const [IE, setIE] = useState(false);
+    useEffect(() => {
+      if (!window["msCrypto"]) return;
+      setIE(true);
+    }, []);
+    const button = IE
+      ? {
+          ...styleButton,
+          "&:hover": {
+            border: `1px solid ${styleGlobalBluePrimaryIE11}`,
+            bgcolor: styleGlobalBlueSecondaryIE11,
+          },
+        }
+      : styleButton;
+    const buttonActive = IE
+      ? {
+          ...styleButtonActive,
+          bgcolor: styleGlobalBlueTertiaryIE11,
+          "&:hover": {
+            bgcolor: styleGlobalBlueTertiaryIE11,
+          },
+        }
+      : styleButtonActive;
+
     const CurrencyButton = ({ curr }: { curr: TCurrencies }) => (
       <Button
-        sx={currency === curr ? styleButtonActive : styleButton}
+        sx={currency === curr ? buttonActive : button}
         onClick={() => handleCurrency(curr)}
         component="button"
       >
