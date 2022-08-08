@@ -10,6 +10,7 @@ import {
   styleGlobalTextColorSecondary,
 } from "../../styles/variables";
 import { MAX_TRANSFER_OPTIONS } from "../../utils/constants";
+import { isIE11Context } from "../../utils/functions";
 
 const styleCheckboxContainer = {
   display: "flex",
@@ -185,7 +186,7 @@ export const TransferCheckbox = ({
 }: TTransferCheckbox) => {
   const [IE, setIE] = useState(false);
   useEffect(() => {
-    if (!window["msCrypto"]) return;
+    if (!isIE11Context()) return;
     setIE(true);
   }, []);
   /**

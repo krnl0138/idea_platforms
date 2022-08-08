@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import React, { useEffect, useState } from "react";
+import { isIE11Context } from "../../utils/functions";
 import { BuyTicketButton } from "./TicketCardBuyTicketButton";
 import { CarrierLogo } from "./TicketCardCarrierLogo";
 
@@ -16,7 +17,7 @@ const styleLeftSection = {
 export const TicketCardLeftSide = React.memo(() => {
   const [IE, setIE] = useState(false);
   useEffect(() => {
-    if (!window["msCrypto"]) return;
+    if (!isIE11Context()) return;
     setIE(true);
   }, []);
   return (

@@ -11,6 +11,7 @@ import {
   styleGlobalGray,
   styleGlobalWhite,
 } from "../../styles/variables";
+import { isIE11Context } from "../../utils/functions";
 import { TCurrencies } from "../../utils/types";
 import {
   styleTicketFormHeading,
@@ -54,7 +55,7 @@ export const TicketsFormCurrency = React.memo(
   ({ currency, handleCurrency }: TTicketsFormCurrency) => {
     const [IE, setIE] = useState(false);
     useEffect(() => {
-      if (!window["msCrypto"]) return;
+      if (!isIE11Context()) return;
       setIE(true);
     }, []);
     const button = IE

@@ -9,13 +9,11 @@ import { TicketCardLeftSide } from "./TicketCardLeftSide";
 import { TicketCardRightSide } from "./TicketCardRightSide";
 
 const DivGridTicketCard = styled("div")`
-  /* @supports (display: grid) { */
   width: 100%;
   display: flex;
   border-radius: ${styleGlobalBorderRadius};
   box-shadow: ${styleGlobalBoxShadow};
   background-color: ${styleGlobalBackgroundColor};
-  /* } */
 `;
 
 // eslint-disable-next-line react/display-name

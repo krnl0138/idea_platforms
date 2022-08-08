@@ -27,3 +27,5 @@ export const makeNaturalDate = (date: string) => {
   });
   return moment(date, "DD.MM.YY").format("D MMM YYYY, dd");
 };
+
+export const isIE11Context = () => window["msCrypto"];

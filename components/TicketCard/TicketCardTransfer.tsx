@@ -4,7 +4,7 @@ import {
   styleGlobalGray,
   styleGlobalTextColorSecondary,
 } from "../../styles/variables";
-import { formatWordEnding } from "../../utils/functions";
+import { isIE11Context, formatWordEnding } from "../../utils/functions";
 import { useTicketCard } from "./TicketCardContext";
 
 const styleMain = {
@@ -41,25 +41,11 @@ const styleMain = {
 const styleMainIE11 = {
   ...styleMain,
   "::before": {
-    content: "''",
-    position: "absolute",
-    left: "1.7rem",
-    bottom: "-5px",
-    transform: "translateX(-50%)",
-    width: "6rem",
+    ...styleMain["::before"],
     borderBottom: `1px solid rgba(0,0,0,0.3)`,
   },
   "::after": {
-    content: "''",
-    position: "absolute",
-    bottom: "-.6rem",
-    right: "-1.3rem",
-    transform: "rotate(45deg)",
-    width: "10px",
-    height: "10px",
-    backgroundImage: `url(/plane-icon.svg)`,
-    backgroundSize: "10px 10px",
-    backgroundRepeat: "no-repeat",
+    ...styleMain["::after"],
     opacity: 0.3,
   },
 };
@@ -75,7 +61,7 @@ export const TicketCardTransfer = () => {
   const { stops } = useTicketCard();
   const [IE, setIE] = useState(false);
   useEffect(() => {
-    if (!window["msCrypto"]) return;
+    if (!isIE11Context()) return;
     setIE(true);
   }, []);
 

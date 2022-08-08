@@ -5,6 +5,7 @@ import {
   styleGlobalOrangeIE11,
   styleGlobalWhite,
 } from "../../styles/variables";
+import { isIE11Context } from "../../utils/functions";
 import { useTicketCard } from "./TicketCardContext";
 
 const styleButton = {
@@ -24,7 +25,7 @@ export const BuyTicketButton = () => {
   const { price, currency } = useTicketCard();
   const [IE, setIE] = useState(false);
   useEffect(() => {
-    if (!window["msCrypto"]) return;
+    if (!isIE11Context()) return;
     setIE(true);
   }, []);
 
